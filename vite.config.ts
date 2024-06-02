@@ -1,6 +1,20 @@
-import { defineConfig } from 'vite'
-import solid from 'vite-plugin-solid'
+import { defineConfig } from "vite";
+import solid from "vite-plugin-solid";
 
 export default defineConfig({
-  plugins: [solid()],
-})
+  base: "./",
+  build: {
+    target: "esnext"
+  },
+  server: {
+    port: 5500,
+    strictPort: true
+  },
+  preview: {
+    port: 5500,
+    strictPort: true
+  },
+  plugins: [
+    solid()
+  ]
+});
