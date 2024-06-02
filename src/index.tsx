@@ -1,9 +1,8 @@
 /* @refresh reload */
-import { render } from 'solid-js/web'
+import { render } from "solid-js/web";
+import App from "./App.js";
+import "./index.scss";
 
-import './index.scss'
-import App from './App.js'
+const root: HTMLDivElement = document.querySelector("#root")!;
 
-const root = document.getElementById('root')
-
-render(() => <App />, root!)
+render(() => <App/>, root);
