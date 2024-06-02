@@ -1,18 +1,8 @@
-import { createEffect } from "solid-js";
+import Gamepad from "./Gamepads.js";
 import "./App.scss";
 
-import type { Gamepads } from "./Gamepads.js";
-
-export interface AppProps {
-  gamepads: Gamepads;
-}
-
-export default function App(props: AppProps) {
-  createEffect(() => {
-    console.log(props.gamepads);
-  });
-
+export default function App() {
   return (
-    <></>
+    <Gamepad/>
   );
 }
