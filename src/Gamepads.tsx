@@ -1,9 +1,11 @@
-import { createEffect, createMemo } from "solid-js";
+import { ParentProps, createContext, createEffect } from "solid-js";
 import { createStore } from "solid-js/store";
 
 export type Gamepads = ReturnType<typeof navigator.getGamepads>;
 
-export const gamepads = createMemo<Gamepads>(() => {
+const GamepadsContext = createContext<Gamepads>(navigator.getGamepads());
+
+export function GamepadsProvider(props: ParentProps) {
   const [gamepads, setGamepads] = createStore<Gamepads>(navigator.getGamepads());
 
   loop();
@@ -21,5 +23,9 @@ export const gamepads = createMemo<Gamepads>(() => {
     requestAnimationFrame(loop);
   }
 
-  return gamepads;
-});
+  return (
+    <GamepadsContext.Provider value={gamepads}>
+      {props.children}
+    </GamepadsContext.Provider>
+  );
+}

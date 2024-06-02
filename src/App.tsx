@@ -1,13 +1,10 @@
-import { createEffect } from "solid-js";
-import { gamepads } from "./Gamepads.js";
+import { GamepadsProvider } from "./Gamepads.js";
 import "./App.scss";
 
 export default function App() {
-  createEffect(() => {
-    console.log(gamepads());
-  });
-
   return (
-    <></>
+    <GamepadsProvider>
+      <button>Hi</button>
+    </GamepadsProvider>
   );
 }
