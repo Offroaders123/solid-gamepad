@@ -1,11 +1,9 @@
-import { ParentProps, createContext, createEffect } from "solid-js";
+import { createEffect } from "solid-js";
 import { createStore } from "solid-js/store";
 
 export type Gamepads = ReturnType<typeof navigator.getGamepads>;
 
-const GamepadsContext = createContext<Gamepads>(navigator.getGamepads());
-
-export function GamepadsProvider(props: ParentProps) {
+export default function Gamepad() {
   const [gamepads, setGamepads] = createStore<Gamepads>(navigator.getGamepads());
 
   loop();
@@ -24,8 +22,6 @@ export function GamepadsProvider(props: ParentProps) {
   }
 
   return (
-    <GamepadsContext.Provider value={gamepads}>
-      {props.children}
-    </GamepadsContext.Provider>
+    <>{gamepads.map(gamepad => gamepad)}</>
   );
 }
