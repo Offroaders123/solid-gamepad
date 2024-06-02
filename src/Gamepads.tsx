@@ -23,13 +23,14 @@ export default function Gamepad() {
 
   createEffect(() => {
     console.log(
-      gamepads
+      ...gamepads
         .filter((gamepad): gamepad is Gamepad => gamepad !== null)
         .map(gamepad => gamepad.axes)
     );
   });
 
   function loop() {
+    setGamepads(navigator.getGamepads());
     requestAnimationFrame(loop);
   }
 
