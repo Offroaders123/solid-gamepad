@@ -1,14 +1,12 @@
-import { createEffect, onMount } from "solid-js";
+import { createEffect, createMemo } from "solid-js";
 import { createStore } from "solid-js/store";
 
 export type Gamepads = ReturnType<typeof navigator.getGamepads>;
 
-export default function createGamepads(): Gamepads {
+export const gamepads = createMemo<Gamepads>(() => {
   const [gamepads, setGamepads] = createStore<Gamepads>(navigator.getGamepads());
 
-  onMount(() => {
-    loop();
-  });
+  loop();
 
   createEffect(() => {
     console.log(
@@ -24,4 +22,4 @@ export default function createGamepads(): Gamepads {
   }
 
   return gamepads;
-}
+});
