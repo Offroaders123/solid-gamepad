@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "gamecontroller.js": "github:Offroaders123/gamecontroller.js",
     "solid-js": "^1.8.17"
   },
   "devDependencies": {
